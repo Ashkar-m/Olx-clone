@@ -1,19 +1,48 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useState } from 'react';
 import Logo from '../../olx-logo.png'; 
 import './Signup.css';
+import { FirebaseContext } from '../../contexts/firebaseContext';
+import { auth } from '../../firebase/config';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { collection, addDoc, getFirestore } from "firebase/firestore"; 
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Signup() {
   const [name,setName] = useState('');
   const [email,setEmail] = useState('');
   const [phone,setPhone] = useState('');
   const [password,setPassword] = useState('');
+
+  const navigate=useNavigate()
+
+  const db = getFirestore();
+  const  handlesubmit=async(e)=>{
+    e.preventDefault();
+    try
+    {
+    const result=await createUserWithEmailAndPassword(auth,email,password);
+    await updateProfile(result.user, {
+      displayName: name
+    });
+    await addDoc(collection(db, 'users'), {
+      id: result.user.uid,
+      displayName: name,
+      phone: phone,
+    }).then(()=>{
+      navigate('/login');
+    })}
+    catch(e){
+      alert(e.message)
+    }
+  }
+
   console.log(name,email,phone,password)
   return (
     <div>
       <div className="signupParentDiv">
         <img width="200px" height="200px" src={Logo}></img> 
-        <form>
+        <form onSubmit={(e)=>handlesubmit(e)}>
           <label htmlFor="fname">Username</label>
           <br />
           <input
@@ -65,7 +94,7 @@ export default function Signup() {
           <br />
           <button>Signup</button>
         </form>
-        <a>Login</a>
+        <Link to='/login' style={{textDecoration:null}}>Login</Link>
       </div>
     </div>
   );

@@ -136,6 +136,9 @@
 .sellMenu .right {
   fill: #3a77ff;
 }
+.sellMenu{
+  right: 2.5rem;
+}
 .sellMenu .sellMenuContent {
   display: flex;
   position: absolute;

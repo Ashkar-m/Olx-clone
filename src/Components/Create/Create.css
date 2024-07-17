@@ -13,6 +13,7 @@
     border-left-color: transparent;
     border-right-color: transparent;
     outline-color: transparent;
+    width: 30rem;
   }
   
   .uploadBtn {

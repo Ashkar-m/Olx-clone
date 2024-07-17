@@ -13,7 +13,6 @@ function Home(props) {
       <Banner />
       <Posts />
       <Footer />
-      <h1>hey</h1>
     </div>
   );
 }
