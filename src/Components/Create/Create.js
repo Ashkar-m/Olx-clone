@@ -88,7 +88,6 @@ const Create = () => {
             <br />
           
           <br />
-          {/* <img alt="Posts" width="200px" height="200px" src={URL.createObjectURL(image)}></img> */}
           {imageUrl && <img width="200px" height="200px" src={imageUrl} alt="Uploaded" />}
           
             <br />

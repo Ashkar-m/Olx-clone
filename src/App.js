@@ -33,7 +33,7 @@ function App() {
           <Route path='/view' element={<ViewPost/>}/>
         </Routes>
       </Router>
-      </PostContext>  
+      </PostContext>
     </div>
   );
 }

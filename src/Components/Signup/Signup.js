@@ -4,7 +4,7 @@ import Logo from '../../olx-logo.png';
 import './Signup.css';
 import { FirebaseContext } from '../../contexts/firebaseContext';
 import { auth } from '../../firebase/config';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { collection, addDoc, getFirestore } from "firebase/firestore"; 
 import { Link, useNavigate } from 'react-router-dom';
 
